@@ -13,7 +13,11 @@ namespace Empleats.Data
             : base(options)
         {
         }
-
         public DbSet<Empleats.Models.Employee> Employee { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Employee>().ToTable("Employee");
+
+        }
     }
 }

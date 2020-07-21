@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Empleats.Data;
 using Empleats.Models;
+using Microsoft.CodeAnalysis.Host;
 
 namespace Empleats
 {
@@ -23,23 +24,38 @@ namespace Empleats
 
         // GET: api/Employees
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployee()
+        //public async Task<ActionResult<IEnumerable<Employee>>> GetEmployee()
+        //{
+        //    return await _context.Employee.ToListAsync();
+            
+        //}
+
+        public async Task<ActionResult<string>> GetEmployee()
         {
-            return await _context.Employee.ToListAsync();
+            return "hola mundo";
+
         }
 
         // GET: api/Employees/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Employee>> GetEmployee(int id)
+        [HttpGet("{name}")]
+        //public async Task<ActionResult<Employee>> GetEmployee(int id)
+        //{
+        //    var employee = await _context.Employee.FindAsync(id);
+
+        //    if (employee == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return employee;
+        //}
+        public async Task<ActionResult<string>> GetEmployee(string name)
         {
-            var employee = await _context.Employee.FindAsync(id);
-
-            if (employee == null)
+            if (name == null)
             {
-                return NotFound();
+                return "hola mundo";
             }
-
-            return employee;
+            return "hola "+name;
         }
 
         // PUT: api/Employees/5
