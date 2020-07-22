@@ -24,39 +24,39 @@ namespace Empleats
 
         // GET: api/Employees
         [HttpGet]
-        //public async Task<ActionResult<IEnumerable<Employee>>> GetEmployee()
-        //{
-        //    return await _context.Employee.ToListAsync();
-            
-        //}
-
-        public async Task<ActionResult<string>> GetEmployee()
+        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployee()
         {
-            return "hola mundo";
+            return await _context.Employee.ToListAsync();
 
         }
+
+        //public async Task<ActionResult<string>> GetEmployee()
+        //{
+        //    return "hola mundo";
+
+        //}
 
         // GET: api/Employees/5
-        [HttpGet("{name}")]
-        //public async Task<ActionResult<Employee>> GetEmployee(int id)
-        //{
-        //    var employee = await _context.Employee.FindAsync(id);
-
-        //    if (employee == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return employee;
-        //}
-        public async Task<ActionResult<string>> GetEmployee(string name)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Employee>> GetEmployee(int id)
         {
-            if (name == null)
+            var employee = await _context.Employee.FindAsync(id);
+
+            if (employee == null)
             {
-                return "hola mundo";
+                return NotFound();
             }
-            return "hola "+name;
+
+            return employee;
         }
+        //public async Task<ActionResult<string>> GetEmployee(string name)
+        //{
+        //    if (name == null)
+        //    {
+        //        return "hola mundo";
+        //    }
+        //    return "hola "+name;
+        //}
 
         // PUT: api/Employees/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -97,6 +97,7 @@ namespace Empleats
         public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
         {
             _context.Employee.Add(employee);
+            
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetEmployee", new { id = employee.EmployeeId }, employee);
