@@ -23,6 +23,7 @@ namespace Empleats
         }
 
         // GET: api/Employees
+        [Microsoft.AspNetCore.Cors.EnableCors("AnotherPolicy")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmployee()
         {
@@ -37,6 +38,7 @@ namespace Empleats
         //}
 
         // GET: api/Employees/5
+        [Microsoft.AspNetCore.Cors.EnableCors("AnotherPolicy")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Employee>> GetEmployee(int id)
         {
@@ -61,6 +63,7 @@ namespace Empleats
         // PUT: api/Employees/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [Microsoft.AspNetCore.Cors.EnableCors("AnotherPolicy")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutEmployee(int id, Employee employee)
         {
@@ -93,6 +96,7 @@ namespace Empleats
         // POST: api/Employees
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [Microsoft.AspNetCore.Cors.EnableCors("AnotherPolicy")]
         [HttpPost]
         public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
         {
@@ -104,6 +108,7 @@ namespace Empleats
         }
 
         // DELETE: api/Employees/5
+        [Microsoft.AspNetCore.Cors.EnableCors("AnotherPolicy")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Employee>> DeleteEmployee(int id)
         {
